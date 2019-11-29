@@ -8,12 +8,37 @@ $lucie = new Warrior('Lucie');
 $anto = new Mage('Anto');
 
 $legolas= new Archer('Legolas');
-var_dump($legolas);
-
+$jon= new Mage('Jon');
+echo "<u>$anto->pseudo et $lucie->pseudo entre dans l'arène</u>:<br><br>";
 // Characters attacking while both alive
-while ($lucie->isAlive() && $legolas->isAlive()) {
+while ($lucie->isAlive() && $anto->isAlive()) {
     // First Character attacking the 2nd
-    echo $lucie->action($legolas);
+    echo $lucie->action($anto);
+    // Check if target is alive
+    if (!$anto->isAlive()) {
+        echo '<br>';
+        echo "$anto->pseudo est KO!";
+        break;
+    };
+    echo '<br>';
+
+    // Second Character attaking the first
+    echo $anto->action($lucie);
+    // Check if target is alive
+    if (!$lucie->isAlive()) {
+        echo '<br>';
+        echo "$lucie->pseudo est KO!";
+        break;
+    };
+    echo '<br>';
+    echo '<br>';
+}
+
+echo "<br><br><u>$jon->pseudo et $legolas->pseudo entre dans l'arène</u>:<br><br>";
+// Characters attacking while both alive
+while ($jon->isAlive() && $legolas->isAlive()) {
+    // First Character attacking the 2nd
+    echo $jon->action($legolas);
     // Check if target is alive
     if (!$legolas->isAlive()) {
         echo '<br>';
@@ -23,11 +48,11 @@ while ($lucie->isAlive() && $legolas->isAlive()) {
     echo '<br>';
 
     // Second Character attaking the first
-    echo $legolas->attack($lucie);
+    echo $legolas->action($jon);
     // Check if target is alive
-    if (!$lucie->isAlive()) {
+    if (!$jon->isAlive()) {
         echo '<br>';
-        echo "$lucie->pseudo est KO!";
+        echo "$jon->pseudo est KO!";
         break;
     };
     echo '<br>';

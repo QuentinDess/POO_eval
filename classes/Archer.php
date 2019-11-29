@@ -10,7 +10,7 @@ class Archer extends Character{
         
     }
   
-    public function attack($target){
+    public function action($target){
         if($this->load == true){
              // j'ai chargé alors je balance la sauce
             $status= $this->special_shoot($target);
@@ -43,7 +43,6 @@ class Archer extends Character{
         // ma super attaque de la mort qui tue 
         //le mt_rand permet de génerer des aléatoire avec un float que je cible avec une décimal grace au /10
         $damage = $this->atk * (mt_rand((15) , 30)/10);
-        var_dump($damage);
         $target->setHp($damage);
         $this->quiver-=2;
         $this->load= false;
