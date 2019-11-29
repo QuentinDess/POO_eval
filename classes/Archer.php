@@ -54,6 +54,7 @@ class Archer extends Character{
         //je lance une petite attaque
         $damage = $this->atk - rand(1,5);
         $target->setHp($damage);
+        $target->isAlive();
         $status = "$this->pseudo sort son petit couteau de cuisine et égratine $target->pseudo qui a $target->lifePoint";
         return $status;
     }
